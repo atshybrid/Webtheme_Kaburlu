@@ -478,8 +478,8 @@ const MainMenu = ({ className, dark }) => {
                                   <li
                                     key={i}
                                     className={`${sub_item.child
-                                        ? "dropdown-submenu"
-                                        : null
+                                      ? "dropdown-submenu"
+                                      : null
                                       }
                                                         `}
                                   >
@@ -529,67 +529,6 @@ const MainMenu = ({ className, dark }) => {
                             >
                               {item.category_name}
                             </NavLink>
-                            {/* {item.list ? (
-                              <NavLink
-                                onClick={(e) => e.preventDefault()}
-                                to="/"
-                                className="menu-dropdown"
-                                data-toggle="dropdown"
-                              >
-                                {item.linkText}
-                                <FontAwesome name={item.icon} />
-                              </NavLink>
-                            ) : (
-                              <NavLink
-                                to={item.link}
-                                className="menu-dropdown"
-                                data-toggle="dropdown"
-                              >
-                                {item.linkText}{" "}
-                                <FontAwesome name={item.icon} />
-                              </NavLink>
-                            )}
-
-                            {item.child ? (
-                              <ul className="dropdown-menu" role="menu">
-                                {item.submenu.map((sub_item, i) => (
-                                  <li
-                                    key={i}
-                                    className={`${sub_item.child
-                                      ? "dropdown-submenu"
-                                      : null
-                                      }
-                                                        `}
-                                  >
-                                    {sub_item.child ? (
-                                      <NavLink
-                                        onClick={(e) => e.preventDefault()}
-                                        to="/"
-                                      >
-                                        {sub_item.linkText}
-                                      </NavLink>
-                                    ) : (
-                                      <NavLink to={sub_item.link}>
-                                        {sub_item.linkText}
-                                      </NavLink>
-                                    )}
-                                    {sub_item.third_menu ? (
-                                      <ul className="dropdown-menu">
-                                        {sub_item.third_menu.map(
-                                          (third_item, i) => (
-                                            <li key={i}>
-                                              <NavLink to={third_item.link}>
-                                                {third_item.linkText}
-                                              </NavLink>
-                                            </li>
-                                          )
-                                        )}
-                                      </ul>
-                                    ) : null}
-                                  </li>
-                                ))}
-                              </ul>
-                            ) : null} */}
                           </li>
                         ))
                         : null}
@@ -612,12 +551,12 @@ const MainMenu = ({ className, dark }) => {
                       >
                         <FontAwesome name="search" />
                       </li>
-                      <li>
+                      {/* <li>
                         <FontAwesome name="user-circle" />
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
-                  <div className="lang d-none d-xl-block">
+                  {/* <div className="lang d-none d-xl-block">
                     <ul>
                       <li>
                         <Link to="/">
@@ -639,7 +578,7 @@ const MainMenu = ({ className, dark }) => {
                         </ul>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                   <div className="temp d-none d-lg-block">
                     <div className="temp_wap">
                       <div className="temp_icon">

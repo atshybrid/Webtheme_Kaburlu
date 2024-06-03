@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BreadCrumb from "../../../component/BreadCrumb";
 import FontAwesome from "../../../component/uiStyle/FontAwesome";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import WidgetTab from "../../../component/WidgetTab";
 import WidgetTrendingNews from "../../../component/WidgetTrendingNews";
 import NewsLetter from "../../../component/NewsLetter";
@@ -21,14 +21,25 @@ import smail1 from "../../../assets/img/post-thumb-2.png";
 import single_post1 from "../../../assets/img/post-thumb-5.png";
 import OurBlogSection from "../../../component/OurBlogSection";
 import BlogComment from "../../../component/BlogComment";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSingleNews } from "../../../redux/util/newsUtils";
+import moment from "moment";
 
 function Post1() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const singleFeed = useSelector(state => state.news.singleFeed)
+
+  useEffect(() => {
+    dispatch(fetchSingleNews(id));
+  }, [dispatch])
+
   return (
     <>
       <div className="archives post post1">
         <BreadCrumb
           className="shadow5 padding-top-30"
-          title="Archive / post 1"
+          title={`${singleFeed?.category.name}`}
         />
         <span className="space-30" />
         <div className="container">
@@ -37,7 +48,7 @@ function Post1() {
               <div className="row">
                 <div className="col-6 align-self-center">
                   <div className="page_category">
-                    <h4>HEALTH</h4>
+                    <h4>{singleFeed?.category.name}</h4>
                   </div>
                 </div>
                 <div className="col-6 text-right">
@@ -58,17 +69,15 @@ function Post1() {
               <div className="space-30" />
               <div className="single_post_heading">
                 <h1>
-                  Japan’s virus success has puzzled the world. Is its luck
-                  running out?
+                  {singleFeed?.article.title}
                 </h1>
                 <div className="space-10" />
                 <p>
-                  The property, complete with 30-seat screening from room, a
-                  100-seat amphitheater and a swimming pond with sandy shower…
+                  {singleFeed?.article.short_news}
                 </p>
               </div>
               <div className="space-40" />
-              <img src={single_post1} alt="thumb" />
+              <img src={singleFeed?.article.img_url} alt="thumb" style={{ width: '100%', maxHeight: 512 }} />
               <div className="space-20" />
               <div className="row">
                 <div className="col-lg-6 align-self-center">
@@ -78,12 +87,12 @@ function Post1() {
                         <img src={author2} alt="author2" />
                       </div>
                     </div>
-                    <Link to="/">Shuvas Chandra</Link>
+                    <Link to="/">{singleFeed?.article.creator.name}</Link>
                     <ul>
                       <li>
-                        <Link to="/">March 26, 2020</Link>
+                        <Link to="/">{moment(singleFeed?.article.create_date_time).format('LL')}</Link>
                       </li>
-                      <li>Updated 1:58 p.m. ET</li>
+                      <li>{`Updated at ${moment(singleFeed?.article.create_date_time).format('LT')}`}</li>
                     </ul>
                   </div>
                 </div>
@@ -115,7 +124,8 @@ function Post1() {
                 </div>
               </div>
               <div className="space-20" />
-              <p>
+              <p>{singleFeed?.article.long_news}</p>
+              {/* <p>
                 Entilators will be taken from certain New York hospitals and
                 redistributed to the worst-hit parts of the state under an order
                 to be signed by Governor Andrew Cuomo.
@@ -328,7 +338,7 @@ function Post1() {
                 the pandemic, and New York Governor Andrew Cuomo has warned that
                 New York risks running out of ventilators for patients in six
                 days.
-              </p>
+              </p> */}
               <div className="space-40" />
               <div className="tags">
                 <ul className="inline">

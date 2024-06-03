@@ -1,11 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const FooterNewsCategories = () => {
+  const settings = useSelector(state => state.news.settings)
   return (
     <>
-      <h3 className="widget-title">News categories</h3>
-      <div className="row">
+      <h3 className="widget-title2">News categories</h3>
+      {settings?.category_list.map((item, i) => (
+        <ul>
+          <li>
+            <Link to="/">{item.category_name}</Link>
+          </li>
+        </ul>
+      ))}
+      {/* <div className="row">
         <div className="col-lg-6">
           <ul>
             <li>
@@ -56,7 +65,7 @@ const FooterNewsCategories = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

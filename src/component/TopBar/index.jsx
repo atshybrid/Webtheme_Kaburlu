@@ -3,6 +3,7 @@ import ProtoTypes from "prop-types";
 import { Link } from "react-router-dom";
 import FontAwesome from "../uiStyle/FontAwesome";
 import Slider from "../Slider";
+import moment from "moment";
 
 const TopBar = ({ className, dark }) => {
   return (
@@ -14,7 +15,7 @@ const TopBar = ({ className, dark }) => {
               className={`trancarousel_area ${dark ? "white" : ""}`}
               style={{ display: "flex" }}
             >
-              <p className="trand">Tranding</p>
+              <p className="trand">Breaking</p>
               <div className="nav_style1" style={{ width: "80%" }}>
                 <Slider
                   navigation={{
@@ -68,7 +69,7 @@ const TopBar = ({ className, dark }) => {
           <div className="col-md-4 align-self-center">
             <div className="top_date_social text-right">
               <div className={`paper_date ${dark ? "white" : ""}`}>
-                <p>Thursday, March 26, 2020</p>
+                <p>{moment(Date.now()).format('dddd, LL')}</p>
               </div>
               <div className={`social1 ${dark ? "white" : ""}`}>
                 <ul className="inline">

@@ -7,7 +7,7 @@ const quick_links = [
     link: "/",
   },
   {
-    name: "Advertise",
+    name: "Contact Us",
     link: "/",
   },
   {
@@ -15,7 +15,7 @@ const quick_links = [
     link: "/",
   },
   {
-    name: "Contact Us",
+    name: "Terms & Conditions",
     link: "/",
   },
 ];

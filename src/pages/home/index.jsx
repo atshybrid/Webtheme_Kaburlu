@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PostCarousel from "../../component/PostCarousel";
 import PostGallery from "../../component/PostGallery";
 import FeatureNews from "../../component/FeatureNews";
@@ -20,8 +20,18 @@ import banner1 from "../../assets/img/ad/ad-1.png";
 import banner2 from "../../assets/img/ad/ad-2.jpg";
 import { Link } from "react-router-dom";
 import { businessNews, entertainments } from "../../data/entertainments";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllNewsFeed } from "../../redux/util/newsUtils";
 
 function Home() {
+  const dispatch = useDispatch();
+  const articleFeeds = useSelector(state => state.news.articleFeeds)
+  console.log("Article Feed ==>", articleFeeds);
+
+  useEffect(() => {
+    dispatch(fetchAllNewsFeed())
+  }, [dispatch])
+
   return (
     <>
       <PostCarousel className="fifth_bg" />
@@ -47,7 +57,7 @@ function Home() {
               <div className="row">
                 <div className="col-12">
                   <div className="heading">
-                    <h2 className="widget-title">Entertrainment News</h2>
+                    <h2 className="widget-title">Political News</h2>
                   </div>
                 </div>
               </div>
@@ -55,18 +65,18 @@ function Home() {
               <div className="entertrainment_carousel mb30">
                 <div className="entertrainment_item">
                   <div className="row justify-content-center">
-                    <EntertainmentNews entertainments={entertainments} />
+                    <EntertainmentNews entertainments={articleFeeds?.feeds[0].articles} />
                   </div>
                 </div>
               </div>
               {/*CAROUSEL END*/}
-              <SportsNews />
               <div className="banner_area mt50 mb60 xs-mt60">
                 <Link to="/">
                   <img src={banner1} alt="banner1" />
                 </Link>
               </div>
-              <BusinessNews businessNews={businessNews} />
+              <SportsNews sports={articleFeeds?.feeds[1].articles} />
+              {/* <BusinessNews businessNews={businessNews} /> */}
             </div>
             <div className="col-lg-4">
               <div className="row">

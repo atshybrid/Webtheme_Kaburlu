@@ -1,11 +1,12 @@
 import React from "react";
+import moment from "moment";
 import ProtoTypes from "prop-types";
 import { Link } from "react-router-dom";
 import sportsbig1 from "../../assets/img/sports-news.jpg";
 import SportsCarousel from "../SportsCarousel";
 import FontAwesome from "../uiStyle/FontAwesome";
 
-const SportsNews = ({ dark }) => {
+const SportsNews = ({ dark, sports }) => {
   return (
     <div className="row">
       <div className="col-12">
@@ -13,7 +14,7 @@ const SportsNews = ({ dark }) => {
           <div className="row">
             <div className="col-12">
               <div className="heading">
-                <h2 className="widget-title">Sports News</h2>
+                <h2 className="widget-title">Movie News</h2>
               </div>
             </div>
           </div>
@@ -22,7 +23,7 @@ const SportsNews = ({ dark }) => {
               <div className="single_post post_type3 mb30">
                 <div className="post_img">
                   <Link to="/">
-                    <img src={sportsbig1} alt="sportsbig1" />
+                    <img src={sports && sports[0].img_url} alt="sportsbig1" />
                   </Link>{" "}
                   <span className="tranding">
                     <FontAwesome name="bolt" />
@@ -30,12 +31,12 @@ const SportsNews = ({ dark }) => {
                 </div>
                 <div className="single_post_text">
                   <div className="meta3">
-                    <Link to="/">TECHNOLOGY</Link>
-                    <Link to="/">March 26, 2020</Link>
+                    <Link to="/">MOVIE</Link>
+                    <Link to="/">{sports && moment(sports[0].create_time).format('LL')}</Link>
                   </div>
                   <h4>
-                    <Link to="/post1">
-                      Copa America: Luis Suarez from devastated US
+                    <Link to={`/post1/${sports && sports[0].article_id}`}>
+                      {sports && sports[0].title}
                     </Link>
                   </h4>
                   <div className="space-10" />
@@ -52,7 +53,7 @@ const SportsNews = ({ dark }) => {
             </div>
             <div className="col-md-6">
               <div className="sports_carousel nav_style1">
-                <SportsCarousel dark={dark ? dark : false} />
+                <SportsCarousel data={sports} dark={dark ? dark : false} />
               </div>
             </div>
           </div>
@@ -66,4 +67,5 @@ export default SportsNews;
 
 SportsNews.propTypes = {
   dark: ProtoTypes.bool,
+  sports: ProtoTypes.array,
 };

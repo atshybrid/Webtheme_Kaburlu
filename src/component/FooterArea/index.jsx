@@ -8,8 +8,11 @@ import FontAwesome from "../uiStyle/FontAwesome";
 
 import flogo from "../../assets/img/logo-2.png";
 import FooterNewsCategories from "../FooterNewsCategories";
+import { useSelector } from "react-redux";
 
 const FooterArea = ({ className }) => {
+  const settings = useSelector(state => state.news.settings)
+
   const [email, setEmail] = useState("");
   const submitHandler = (e) => {
     e.preventDefault();
@@ -23,7 +26,7 @@ const FooterArea = ({ className }) => {
             <div className="col-md-6 align-self-center">
               <div className="footer_logo logo">
                 <Link to="/">
-                  <img src={flogo} alt="logo" />
+                  <img src={settings?.sitelogo} alt="logo" style={{ maxHeight: 96 }} />
                 </Link>
               </div>
               <div className="social2">
@@ -82,6 +85,28 @@ const FooterArea = ({ className }) => {
               </div>
               <div className="col-sm-6 col-lg">
                 <div className="single_footer_nav">
+                  <h3 className="widget-title2">Popular Topic</h3>
+                  <ul>
+                    <li>
+                      <Link to="/">Latest News</Link>
+                    </li>
+                    <li>
+                      <Link to="/">Top News</Link>
+                    </li>
+                    <li>
+                      <Link to="/">Trending News</Link>
+                    </li>
+                    <li>
+                      <Link to="/">Featured News</Link>
+                    </li>
+                    <li>
+                      <Link to="/">Breaking News</Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              {/* <div className="col-sm-6 col-lg">
+                <div className="single_footer_nav">
                   <h3 className="widget-title2">Living</h3>
                   <div className="row">
                     <div className="col-lg-6">
@@ -136,12 +161,12 @@ const FooterArea = ({ className }) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
-            <div className="space-40" />
+            {/* <div className="space-40" />
             <div className="border_white" />
-            <div className="space-40" />
-            <div className="row">
+            <div className="space-40" /> */}
+            {/* <div className="row">
               <div className="col-sm-6 col-lg-5">
                 <div className="single_footer_nav border_white_right">
                   <h3 className="widget-title2">Opinion</h3>
@@ -180,11 +205,11 @@ const FooterArea = ({ className }) => {
               <div className="col-sm-6 col-lg-7">
                 <TwitterFeed />
               </div>
-            </div>
+            </div> */}
           </div>
-          <div className="col-lg-4">
+          {/* <div className="col-lg-4">
             <FooterMoreNews />
-          </div>
+          </div> */}
         </div>
       </div>
       <FooterCopyright />

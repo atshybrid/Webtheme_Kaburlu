@@ -15,7 +15,7 @@ const LogoArea = ({ className, dark }) => {
           <div className="col-lg-4 align-self-center">
             <div className="logo">
               <Link to="/">
-                <img src={settings?.sitelogo} alt="logo" />
+                <img src={settings?.sitelogo} alt="logo" style={{ maxHeight: 96 }} />
               </Link>
             </div>
           </div>

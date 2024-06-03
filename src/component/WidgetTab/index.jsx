@@ -3,6 +3,7 @@ import ProtoTypes from "prop-types";
 import { TabContent, TabPane, Nav, NavItem, Fade } from "reactstrap";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
+import FontAwesome from "../uiStyle/FontAwesome";
 
 import thumb1 from "../../assets/img/gallery-1.jpg";
 import thumb2 from "../../assets/img/gallery-2.jpg";
@@ -97,7 +98,7 @@ const WidgetTab = ({ className, dark }) => {
 
   return (
     <div className={`widget_tab md-mt-30 ${className}`}>
-      <Nav tabs>
+      {/* <Nav tabs>
         <NavItem>
           <Link
             to="/"
@@ -131,7 +132,30 @@ const WidgetTab = ({ className, dark }) => {
             POPULAR
           </Link>
         </NavItem>
-      </Nav>
+      </Nav> */}
+      <div className="district">
+        <ul>
+          <li>
+            <Link to="/">
+              Select District <FontAwesome name="angle-down" />
+            </Link>
+            <ul>
+              <li>
+                <Link to="/">Warangal</Link>
+              </li>
+              <li>
+                <Link to="/">Ranga Reddy</Link>
+              </li>
+              <li>
+                <Link to="/">Nizamabad</Link>
+              </li>
+              <li>
+                <Link to="/">Karimnagar</Link>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
           <WidgetTabPane dark={dark} a_id={activeTab} id="1" arr={data} />

@@ -17,6 +17,7 @@ import blog_small5 from "../../assets/img/sports/sports-5.jpg";
 
 import { mostViewSort } from "../../utils/commonFunctions";
 import Slider from "../Slider";
+import moment from "moment";
 
 const mostView = [
   {
@@ -81,7 +82,7 @@ const mostView = [
   },
 ];
 
-const SportsCarousel = ({ dark }) => {
+const SportsCarousel = ({ dark, data }) => {
   return (
     <div className="widget tab_widgets">
       <div className="post_type2_carousel multipleRowCarousel nav_style1">
@@ -96,13 +97,13 @@ const SportsCarousel = ({ dark }) => {
             rows: 6,
           }}
         >
-          {mostViewSort(mostView).map((item, i) => (
+          {mostViewSort(data).map((item, i) => (
             <div key={i} className="single_post2_carousel">
               <div className="single_post widgets_small">
                 <div className="post_img">
                   <div className="img_wrap">
                     <Link to="/">
-                      <img src={item.image} alt="thumb" />
+                      <img src={item.img_url} alt="thumb" />
                     </Link>
                   </div>
                   <span className="tranding">
@@ -111,11 +112,11 @@ const SportsCarousel = ({ dark }) => {
                 </div>
                 <div className="single_post_text">
                   <div className="meta2">
-                    <Link to="/">{item.category}</Link>
-                    <Link to="/">{item.date}</Link>
+                    <Link to="/">{"MOVIE"}</Link>
+                    <Link to="/">{moment(item.create_time).format('LL')}</Link>
                   </div>
                   <h4>
-                    <Link to="/post1">{item.title}</Link>
+                    <Link to={`/post1/${item.article_id}`}>{item.title}</Link>
                   </h4>
                 </div>
               </div>
@@ -146,4 +147,5 @@ export default SportsCarousel;
 
 SportsCarousel.propTypes = {
   dark: ProtoTypes.bool,
+  data: ProtoTypes.array,
 };

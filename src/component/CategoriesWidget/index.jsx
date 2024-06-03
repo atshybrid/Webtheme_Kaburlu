@@ -8,6 +8,7 @@ import category4 from "../../assets/img/categories-4.jpg";
 import category5 from "../../assets/img/categories-5.jpg";
 import category6 from "../../assets/img/categories-6.jpg";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const categories = [
   {
@@ -43,6 +44,7 @@ const categories = [
 ];
 
 const CategoriesWidget = () => {
+  const settings = useSelector(state => state.news.settings)
   return (
     <div className="widget category mb30">
       <div className="row">
@@ -56,12 +58,12 @@ const CategoriesWidget = () => {
         </div>
       </div>
       <ul>
-        {categories.map((item, i) => (
+        {settings?.category_list.map((item, i) => (
           <li key={i}>
             <Link to="/" style={{ background: `url(${item.big_image})` }}>
               {" "}
-              <span>{item.title}</span>
-              <img src={item.small_img} alt="category" />
+              <span>{item.category_name}</span>
+              <img src={union} alt="category" />
             </Link>
           </li>
         ))}
